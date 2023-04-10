@@ -7,7 +7,7 @@
 {% block contenido %}
 <h1>Busca un libro</h1>
 <p>
-    <form action= "" method= "POST">
+    <form action= "">
         {% csrf_token %}
         {{formulario}}
         <button>Buscar</button>
@@ -22,6 +22,6 @@
     {% endfor %}
 
 {% else %}
-    <h2>No hay datos sobre libros</h2>
+    <h3>No hay coincidencias</h3>
 {% endif %}
 {% endblock contenido %}

@@ -23,14 +23,12 @@ def libro(request):
     return render(request, 'inicio/libro.html', {'formulario':formulario})
 
 def buscar_libro(request):
-    nombre_a_buscar = request.GET.get('titulo', None) # Nunca da true...    
-
+    nombre_a_buscar = request.GET.get('titulo', None)
+    
     if nombre_a_buscar:
         libros = Libro.objects.filter(titulo__icontains=nombre_a_buscar)
-        print("1")
     else:
         libros = Libro.objects.all()
-        print("2")
 
     #libros = Libro.objects.all()
     formulario_busqueda = BuscarLibro()
