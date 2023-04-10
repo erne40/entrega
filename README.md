@@ -9,3 +9,5 @@ Si accedes a "http://127.0.0.1:8000/libro/" puedes crear una entrada en la base 
     4.- editorial
     
     (Los atributos están en "models.py")
+
+Si accedes a "http://127.0.0.1:8000/buscar/" puedes buscar un libro por título
