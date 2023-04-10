@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from inicio.models import Libro
-from inicio.forms import CreacionLibroFormulario
+from inicio.forms import CreacionLibroFormulario, BuscarLibro
 
 # Create your views here.
 
@@ -21,3 +21,19 @@ def libro(request):
 
     formulario = CreacionLibroFormulario()
     return render(request, 'inicio/libro.html', {'formulario':formulario})
+
+def buscar_libro(request):
+    nombre_a_buscar = request.GET.get('titulo', None) # Nunca da true...    
+
+    if nombre_a_buscar:
+        libros = Libro.objects.filter(titulo__icontains=nombre_a_buscar)
+        print("1")
+    else:
+        libros = Libro.objects.all()
+        print("2")
+
+    #libros = Libro.objects.all()
+    formulario_busqueda = BuscarLibro()
+    return render(request, 'inicio/buscar_libro', {'libros': libros, 'formulario': formulario_busqueda})
+
+
